@@ -1,0 +1,65 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="titulo">Title</label>
+        <input
+        type="text"
+        class="form-control"
+        id="titulo"
+        required
+        [(ngModel)]="livro.titulo"
+        name="titulo"
+        />
+      </div>
+      <div>
+        <div class="form-group" style="text-align: center;">
+          <label class="form-check-label" for="checkdate">Lançado hoje</label>
+          <span>
+            <input class="form-check" type="checkbox" value="" id="checkdate" [(ngModel)]="isToday" style="margin: auto;">
+          </span>
+          
+        </div>
+
+        <span>
+          <div class="form-group">
+            <label for="lancamento">Lançamento</label>
+            <input
+            [disabled]="isToday"
+             type="date"
+            class="form-control"
+            id="lancamento"
+            required
+            [(ngModel)]="livro.lancamento"
+            name="lancamento"
+
+            />
+          </div>
+        </span>
+      </div>
+      
+      
+      
+      <div class="form-group">
+        <label for="autor">Selecione o autor: </label>
+        <select class="form-control"
+        id="autor"
+        required
+        [(ngModel)]="currentIdAutor"
+        name="autor">
+          <option *ngFor="let autor of possibleAutores" value= {{autor.id_autor}}>
+            {{autor.nome}}
+          </option>
+        </select>
+      </div>
+      <button (click)="saveLivro()" class="btn btn-success">Submit</button>
+    </div>
+    
+    
+    <div *ngIf="submitted">
+      <h4>Livro was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newLivro()">Add</button>
+    </div>
+  </div>
+</div>
+

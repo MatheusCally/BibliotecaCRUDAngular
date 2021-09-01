@@ -1,0 +1,44 @@
+<div>
+  <div *ngIf="currentAutor.id_autor" class="edit-form">
+    <h4>Autor</h4>
+    <form>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          [(ngModel)]="currentAutor.nome"
+          name="nome"
+        />
+      </div>
+      <div class="form-group">
+        <label for="idade">Idade</label>
+        <input
+          type="text"
+          class="form-control"
+          id="idade"
+          [(ngModel)]="currentAutor.idade"
+          name="idade"
+        />
+      </div>
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteAutor()">
+      Delete
+    </button>
+    
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateAutor()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+
+
+  <div *ngIf="!currentAutor.id_autor">
+    <br />
+    <p>Cannot access this Autor...</p>
+  </div>

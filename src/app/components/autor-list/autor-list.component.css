@@ -1,0 +1,14 @@
+.list {
+    text-align: left;
+    max-width: 750px;
+    margin: auto;
+  }
+
+  .list-group{
+    max-width: 345px
+  }
+  .DivWithScroll{
+    max-height:484px;
+    width: 345px;
+    overflow-y:auto;
+}

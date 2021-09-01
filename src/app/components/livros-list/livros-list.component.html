@@ -1,0 +1,102 @@
+<div class="list row">
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Search by title"
+            #botao
+            (keypress)="searchTitle(botao.value)"
+            />
+            <div class="input-group-append">
+                <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="searchTitle(botao.value)"
+                >
+                Search
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+    <div class="input-group mb-3">
+        <input
+        type="date"
+        class="form-control"
+        placeholder="Filter by date"
+        #date/>
+        <div class="input-group-append">
+            <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="findAfter(date.value)">
+            Filter
+        </button>
+    </div>
+</div>
+</div>
+<div class="col-md-6">
+    <h4>Lista de Livros</h4>
+    <ul class="list-group">
+        <li
+        class="list-group-item"
+        *ngFor="let livro of livros; let i = index"
+        [class.active] = "i == currentIndex"
+        (click)="setActiveLivro(livro,i)"
+        >
+        {{livro.titulo }}
+    </li>
+</ul>
+<!--
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllLivros()">
+        Remove All
+    </button>
+-->
+</div>
+<div class="col-md-6">
+    <div *ngIf="currentLivro.id_livro">
+        
+        <h4>Livro</h4>
+        <div>
+            <label><strong>Id:</strong></label> {{ currentLivro.id_livro }}
+        </div>
+        <div>
+            <label><strong>Titulo:</strong></label> {{ currentLivro.titulo }}
+        </div>
+        <div>
+            <label><strong>Lançamento:</strong></label>
+            {{ currentLivro.lancamento }}
+        </div>
+        <hr>
+        <div>
+            <label><strong>Autor:</strong></label> {{ currentLivro?.autor?.nome}}
+        </div>
+        <div>
+            <label><strong>Idade:</strong></label>
+            {{ currentLivro?.autor?.idade }}
+        </div>
+        
+        <a class="badge badge-warning" routerLink="/livro/{{ currentLivro.id_livro }}">
+            Edit
+        </a>
+        
+        <div>
+            <button class="badge badge-secondary" (click)="resetActiveLivro()">Limpar seleção</button>
+        </div>
+        
+    </div>
+    
+    <div>
+        <button class="badge badge-dark" (click)="ngOnInit()">
+            Limpar busca
+        </button>
+    </div> 
+    
+    <div *ngIf="!currentLivro">
+        <br />
+        <p>Por favro selecione um livro...</p>
+    </div>
+</div>
+</div>
