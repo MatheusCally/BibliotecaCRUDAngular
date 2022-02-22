@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Autor } from 'src/app/models/autor.model';
 import { Livro } from 'src/app/models/livro.model';
 import { AutorService } from 'src/app/services/autor.service';
+import { ServerService } from 'src/app/services/server.service';
 
 @Component({
   selector: 'app-autor-list',
   templateUrl: './autor-list.component.html',
   styleUrls: ['./autor-list.component.css']
 })
-export class AutorListComponent implements OnInit {
+export class AutorListComponent implements OnInit{
 
   autores?: Autor[];
   currentAutor: Autor = {
@@ -17,6 +18,9 @@ export class AutorListComponent implements OnInit {
   keys?: String[];
   currentAutorLivros?: Livro[];
   constructor(private autorService: AutorService) { }
+
+
+
   currentIndex = -1
   ngOnInit(): void {
     this.retrieveAutores();
@@ -30,9 +34,7 @@ export class AutorListComponent implements OnInit {
     .subscribe(
       data => {
         this.autores = data;
-        console.log(data);
       },error => {
-        console.log(error)
       }
     );
   }

@@ -6,8 +6,9 @@ import { AddAutorComponent } from './components/add-autor/add-autor.component';
 import { LivrosListComponent } from './components/livros-list/livros-list.component';
 import { LivroDetailsComponent } from './components/livro-details/livro-details.component';
 import { AddLivroComponent } from './components/add-livro/add-livro.component';
+import { LoginComponent } from './login/login.component';
 const routes: Routes = [
-  { path: '', redirectTo: 'autor', pathMatch: 'full' },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'autor', component: AutorListComponent },
   { path: 'autor/:id', component:AutorDetailsComponent },
   { path: 'add', component: AddAutorComponent },
