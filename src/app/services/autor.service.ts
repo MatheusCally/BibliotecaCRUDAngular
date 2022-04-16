@@ -12,7 +12,7 @@ import { ServerService } from './server.service';
   providedIn: 'root'
 })
 export class AutorService implements OnInit {
-  // token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXRoZXVzIiwiZXhwIjoxNjQ1NTAwMzg3LCJpYXQiOjE2NDU0ODIzODd9.-kllfSFaSBjwzY3Xbwsoe-anoAWve6DzUPAUXyT4Nyy6J9caH3HCtLySoEmYWQqnIEuY1p1gQktXpYk1mseJ0w';
+
   public token: string | null = localStorage.getItem("token") || null;
   uri = environment.baseUrl + "/autor";
   constructor(private http: HttpClient, private serverService: ServerService) { }

@@ -10,7 +10,6 @@ import { ServerService } from './server.service';
 })
 export class LivroService {
    baseUrl = environment.baseUrl + '/livro';
-   token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXRoZXVzIiwiZXhwIjoxNjQ1NTAwMzg3LCJpYXQiOjE2NDU0ODIzODd9.-kllfSFaSBjwzY3Xbwsoe-anoAWve6DzUPAUXyT4Nyy6J9caH3HCtLySoEmYWQqnIEuY1p1gQktXpYk1mseJ0w';
   constructor(private http: HttpClient,private serverService: ServerService) { }
 
   getAll(): Observable<Livro[]> {
@@ -30,9 +29,8 @@ export class LivroService {
   create(data: any): Observable<any> {
     return this.http.post(this.baseUrl, data,{ headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': 'Bearer ' + this.token
-    },
-  responseType: 'text'});
+      'Authorization': this.serverService.getToken()
+    }});
   }
 
   update(id: any, data: any): Observable<any> {
